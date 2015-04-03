@@ -5,7 +5,7 @@
     var currentScriptPath = scripts[scripts.length - 1].src;
     //console.log(currentScriptPath);
 
-    angular.module('nombreapp.ac-search-panel', ['ngRoute'])
+    angular.module('ac-search-panel', ['ngRoute'])
         .directive('acSearchPanel', AcSearchPanel)
         .service('acSearchPanelService', AcSearchPanelService);
 
