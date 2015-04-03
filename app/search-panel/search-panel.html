@@ -1,0 +1,24 @@
+<div>
+    <label for="{{identifier}}">Producto</label><br>
+    <input type="text"
+           id="{{identifier}}"
+           name="{{identifier}}"
+           ng-model="objName"
+           ng-maxlength="45"
+           required
+           ng-keyup="acSearchCtrl.mostrarPanel();"
+           ng-focus="acSearchCtrl.mostrarPanel();">
+        <span
+                style="color:red"
+                ng-show="dirtyCondition && invalidCondition">
+            <span ng-show="requiredCondition">Debe ingresar un Nombre</span>
+            <span ng-show="maxlengthCondition">El Nombre es demasiado largo (Máximo 45)</span>
+        </span>
+
+    <div class="ac-live-search" id="ac-live-search{{nombre}}"
+         ng-focus="acSearchCtrl.mostrarPanel();"
+         ng-click="acSearchCtrl.select();">
+
+    </div>
+</div>
+<link rel="stylesheet" href="./search-panel/search-panel.css"/>
