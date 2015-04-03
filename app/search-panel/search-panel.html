@@ -17,7 +17,10 @@
 
     <div class="ac-live-search" id="ac-live-search{{nombre}}"
          ng-focus="acSearchCtrl.mostrarPanel();"
-         ng-click="acSearchCtrl.select();">
+         >
+        <div class="ac-search-results" ng-repeat="data in acSearchCtrl.data" ng-click="acSearchCtrl.select($index);">
+            {{data.nombre}} {{data.apellido}} {{data.description}}
+        </div>
 
     </div>
 </div>

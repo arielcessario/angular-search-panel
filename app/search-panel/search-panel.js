@@ -23,7 +23,7 @@
                 nombref: '@',
                 width: '@',
                 fontSize: '@',
-                url:'='
+                func:'='
             },
             templateUrl: currentScriptPath.replace('.js', '.html'),
             controller: function ($scope, $compile, $http) {
@@ -33,12 +33,33 @@
                 vm.mostrarPanel = mostrarPanel;
                 vm.ocultarPanel = ocultarPanel;
                 vm.select = select;
+                vm.func = $scope.func;
+                vm.data = [];
+
+
 
                 //$document.on('click', mostrarPanel);
 
 
-                function select() {
-                    console.log('lañsdfkjasñdfj');
+                function select(index) {
+
+                    $scope.obj = vm.data[index];
+
+                    if(vm.data[index].nombre !== undefined && vm.data[index].nombre !== ''){
+                        $scope.objName = vm.data[index].nombre;
+                        if(vm.data[index].apellido !== undefined && vm.data[index].apellido !== ''){
+                            $scope.objName = $scope.objName + ' ' + vm.data[index].apellido;
+                        }
+                    }
+
+                    if(vm.data[index].descripcion !== undefined && vm.data[index].descripcion !== ''){
+                        console.log('nooo');
+                        $scope.objName = vm.data[index].descripcion;
+                    }
+
+
+
+                    ocultarPanel();
                 }
 
                 function ocultarPanel() {
@@ -66,18 +87,34 @@
 
                     if ($scope.objName != undefined && $scope.objName.length > 3) {
                         var element = document.getElementById("ac-live-search" + $scope.nombre);
+
+
+                        vm.func($scope.objName, function(data){
+
+                            if(data.length>0){
+                                vm.data = [];
+
+                                vm.data = data;
+
+                                var heightPanel = 32 * data.length;
+
+
+                                angular.element(element).css({position: 'fixed'});
+                                angular.element(element).css({backgroundColor: 'blue'});
+                                angular.element(element).css({width: $scope.width + 'px'});
+                                angular.element(element).css({height: heightPanel + 'px'});
+                                //angular.element(element).css({top: top+ 'px'});
+                                angular.element(element).css({left: $scope.left + 'px'});
+                                angular.element(element).css({margin: '2px'});
+
+                                angular.element(element).css({opacity: '1'});
+                                angular.element(element).css({zIndex: '1'});
+                            }
+
+                        });
+
+
                         //var top = parseInt($scope.fontSize) + parseInt($scope.top);
-
-                        angular.element(element).css({position: 'fixed'});
-                        angular.element(element).css({backgroundColor: 'blue'});
-                        angular.element(element).css({width: $scope.width + 'px'});
-                        angular.element(element).css({height: $scope.fontSize + 'px'});
-                        //angular.element(element).css({top: top+ 'px'});
-                        angular.element(element).css({left: $scope.left + 'px'});
-                        angular.element(element).css({margin: '2px'});
-
-                        angular.element(element).css({opacity: '1'});
-                        angular.element(element).css({zIndex: '1'});
                     } else {
                         ocultarPanel();
                     }
