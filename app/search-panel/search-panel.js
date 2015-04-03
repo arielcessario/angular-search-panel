@@ -50,9 +50,7 @@
                         if(vm.data[index].apellido !== undefined && vm.data[index].apellido !== ''){
                             $scope.objName = $scope.objName + ' ' + vm.data[index].apellido;
                         }
-                    }
-
-                    if(vm.data[index].descripcion !== undefined && vm.data[index].descripcion !== ''){
+                    }else if(vm.data[index].descripcion !== undefined && vm.data[index].descripcion !== ''){
                         console.log('nooo');
                         $scope.objName = vm.data[index].descripcion;
                     }
