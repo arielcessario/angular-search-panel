@@ -39,7 +39,7 @@
 
 
                 //$document.on('click', mostrarPanel);
-
+                ocultarTodo();
 
                 function select(index) {
 
@@ -100,7 +100,6 @@
 
 
                                 angular.element(element).css({position: 'fixed'});
-                                angular.element(element).css({backgroundColor: 'blue'});
                                 angular.element(element).css({width: $scope.width + 'px'});
                                 angular.element(element).css({height: heightPanel + 'px'});
                                 //angular.element(element).css({top: top+ 'px'});

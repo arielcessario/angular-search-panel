@@ -1,12 +1,27 @@
-input{
+input {
     /*background-color: #ffff00;*/
 }
 
-.ac-search-results{
-
+.ac-search-results {
+    cursor: pointer;
+    padding: 2px;
 }
 
-.ac-live-search{
+.ac-search-results:hover {
+    background-color: #737373;
+    color: #ffffff;
+}
+
+.ac-live-search {
     max-height: 200px;
-    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px #AAAAAA;
+    border-radius: 4px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
 }
