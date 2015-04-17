@@ -19,6 +19,7 @@
                 obj: '=',
                 objName: '=',
                 dataSet: '=',
+                nombreVisible: '@nombre',
                 nombre: '@',
                 nombref: '@',
                 width: '@',
