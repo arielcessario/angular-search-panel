@@ -63,14 +63,18 @@
 
                 function ocultarPanel() {
                     var element = document.getElementById("ac-live-search" + $scope.nombre);
-                    angular.element(element).css({opacity: '0'});
+                    //angular.element(element).css({opacity: '0'});
+                    angular.element(element).css({WebkitClipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)'});
+                    angular.element(element).css({clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)'});
                     angular.element(element).css({zIndex: '-1'});
                 }
 
                 function ocultarTodo() {
                     var elements = document.getElementsByClassName('ac-live-search');
                     for (var i = 0; i < elements.length; i++) {
-                        angular.element(elements[i]).css({opacity: '0'});
+                        //angular.element(elements[i]).css({opacity: '0'});
+                        angular.element(elements[i]).css({WebkitClipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)'});
+                        angular.element(elements[i]).css({clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)'});
                         angular.element(elements[i]).css({zIndex: '-1'});
                     }
 
@@ -98,14 +102,19 @@
                                 var heightPanel = 32 * data.length;
 
 
-                                angular.element(element).css({position: 'fixed'});
+                                angular.element(element).css({position: 'absolute'});
                                 angular.element(element).css({width: $scope.width + 'px'});
                                 angular.element(element).css({height: heightPanel + 'px'});
                                 //angular.element(element).css({top: top+ 'px'});
+                                //angular.element(element).css({marginTop: '-35px'});
                                 angular.element(element).css({left: $scope.left + 'px'});
                                 angular.element(element).css({margin: '2px'});
 
-                                angular.element(element).css({opacity: '1'});
+
+                                angular.element(element).css({WebkitClipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)'});
+                                angular.element(element).css({clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)'});
+
+                                //angular.element(element).css({opacity: '1'});
                                 angular.element(element).css({zIndex: '1'});
                             }
 
