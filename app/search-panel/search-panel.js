@@ -96,14 +96,14 @@
                         if(vm.extraFilter != '' && vm.extraFilter !== undefined){
                             vm.func($scope.objName, vm.extraFilter, function(data){
 
-                                showResults(data);
+                                showResults(data, element);
 
                             });
                         }else{
 
                             vm.func($scope.objName, function(data){
 
-                                showResults(data);
+                                showResults(data, element);
 
                             });
 
@@ -121,7 +121,7 @@
                 }
 
 
-                function showResults(data){
+                function showResults(data, element){
                     if(data.length>0){
                         vm.data = [];
 
