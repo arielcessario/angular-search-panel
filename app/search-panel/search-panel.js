@@ -24,7 +24,8 @@
                 nombref: '@',
                 width: '@',
                 fontSize: '@',
-                func:'='
+                func:'=',
+                extraFilter: '='
             },
             templateUrl: currentScriptPath.replace('.js', '.html'),
             controller: function ($scope, $compile, $http) {
@@ -36,6 +37,7 @@
                 vm.select = select;
                 vm.func = $scope.func;
                 vm.data = [];
+                vm.extraFilter = $scope.extraFilter;
 
 
 
@@ -91,39 +93,57 @@
                     if ($scope.objName != undefined && $scope.objName.length > 3) {
                         var element = document.getElementById("ac-live-search" + $scope.nombre);
 
+                        if(vm.extraFilter != '' && vm.extraFilter !== undefined){
+                            vm.func($scope.objName, vm.extraFilter, function(data){
 
-                        vm.func($scope.objName, function(data){
+                                showResults(data);
 
-                            if(data.length>0){
-                                vm.data = [];
+                            });
+                        }else{
 
-                                vm.data = data;
+                            vm.func($scope.objName, function(data){
 
-                                var heightPanel = 32 * data.length;
+                                showResults(data);
 
+                            });
 
-                                angular.element(element).css({position: 'absolute'});
-                                angular.element(element).css({width: $scope.width + 'px'});
-                                angular.element(element).css({height: heightPanel + 'px'});
-                                //angular.element(element).css({top: top+ 'px'});
-                                //angular.element(element).css({marginTop: '-35px'});
-                                angular.element(element).css({left: $scope.left + 'px'});
-                                angular.element(element).css({margin: '2px'});
+                        }
 
 
-                                angular.element(element).css({WebkitClipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)'});
-                                angular.element(element).css({clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)'});
 
-                                //angular.element(element).css({opacity: '1'});
-                                angular.element(element).css({zIndex: '1'});
-                            }
 
-                        });
 
 
                         //var top = parseInt($scope.fontSize) + parseInt($scope.top);
                     } else {
                         ocultarPanel();
+                    }
+                }
+
+
+                function showResults(data){
+                    if(data.length>0){
+                        vm.data = [];
+
+                        vm.data = data;
+
+                        var heightPanel = 32 * data.length;
+
+
+                        angular.element(element).css({position: 'absolute'});
+                        angular.element(element).css({width: $scope.width + 'px'});
+                        angular.element(element).css({height: heightPanel + 'px'});
+                        //angular.element(element).css({top: top+ 'px'});
+                        //angular.element(element).css({marginTop: '-35px'});
+                        angular.element(element).css({left: $scope.left + 'px'});
+                        angular.element(element).css({margin: '2px'});
+
+
+                        angular.element(element).css({WebkitClipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)'});
+                        angular.element(element).css({clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)'});
+
+                        //angular.element(element).css({opacity: '1'});
+                        angular.element(element).css({zIndex: '1'});
                     }
                 }
 
