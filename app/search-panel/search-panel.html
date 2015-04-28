@@ -6,7 +6,7 @@
            ng-model="objName"
            ng-maxlength="45"
            required
-           ng-keyup="acSearchCtrl.mostrarPanel();"
+           ng-keyup="acSearchCtrl.mostrarPanel(); acSearchCtrl.move($event);"
            ng-focus="acSearchCtrl.mostrarPanel();"><br>
     <label for="{{identifier}}">{{nombreVisible}}</label>
         <span
@@ -19,7 +19,8 @@
     <div class="ac-live-search" id="ac-live-search{{nombre}}"
          ng-focus="acSearchCtrl.mostrarPanel();"
          >
-        <div class="ac-search-results" ng-repeat="data in acSearchCtrl.data" ng-click="acSearchCtrl.select($index);">
+        <div class="ac-search-results" ng-repeat="data in acSearchCtrl.data" ng-click="acSearchCtrl.select($index);"
+                ng-class="{'ac-search-item-selected':acSearchCtrl.indexSelected == $index}">
             {{data.nombre}} {{data.apellido}} {{data.description}}
         </div>
 

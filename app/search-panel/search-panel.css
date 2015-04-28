@@ -7,7 +7,8 @@ input {
     padding: 2px;
 }
 
-.ac-search-results:hover {
+.ac-search-results:hover,
+.ac-search-item-selected{
     background-color: #737373;
     color: #ffffff;
 }

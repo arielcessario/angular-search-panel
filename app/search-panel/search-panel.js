@@ -34,12 +34,19 @@
                 vm.list = [];
                 vm.mostrarPanel = mostrarPanel;
                 vm.ocultarPanel = ocultarPanel;
+                vm.move = move;
                 vm.select = select;
                 vm.func = $scope.func;
                 vm.data = [];
                 vm.extraFilter = $scope.extraFilter;
+                vm.indexSelected = 0;
 
-
+                $scope.$watch(
+                    'extraFilter', function(){
+                        //console.log($scope.extraFilter);
+                        vm.extraFilter = $scope.extraFilter;
+                    }
+                );
 
                 //$document.on('click', mostrarPanel);
                 ocultarTodo();
@@ -54,7 +61,6 @@
                             $scope.objName = $scope.objName + ' ' + vm.data[index].apellido;
                         }
                     }else if(vm.data[index].descripcion !== undefined && vm.data[index].descripcion !== ''){
-                        console.log('nooo');
                         $scope.objName = vm.data[index].descripcion;
                     }
 
@@ -117,6 +123,26 @@
                         //var top = parseInt($scope.fontSize) + parseInt($scope.top);
                     } else {
                         ocultarPanel();
+                    }
+                }
+
+                function move(event){
+                    //console.log(event);
+
+                    if(vm.data.length > 0){
+                        if(event.keyCode == 40 && vm.indexSelected < vm.data.length){
+                            vm.indexSelected += 1;
+                        }
+
+                        if(event.keyCode == 38 && vm.indexSelected > 0){
+                            vm.indexSelected -= 1;
+                        }
+
+
+                        if(event.keyCode == 13){
+                            select(vm.indexSelected);
+                        }
+
                     }
                 }
 
