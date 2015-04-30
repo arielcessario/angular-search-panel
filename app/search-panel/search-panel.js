@@ -96,34 +96,45 @@
 
                     ocultarTodo();
 
-                    if ($scope.objName != undefined && $scope.objName.length > 3) {
-                        var element = document.getElementById("ac-live-search" + $scope.nombre);
+                    $timeout(
+                        function showPanel() {
+                            $scope.$watch(
+                                'objName', function(){
+                                    vm.objName = $scope.objName;
+                                }
+                            );
 
-                        if(vm.extraFilter != '' && vm.extraFilter !== undefined){
-                            vm.func($scope.objName, vm.extraFilter, function(data){
+                            if (vm.objName !== undefined && vm.objName.length >= 3) {
+                                console.log('entra');
+                                var element = document.getElementById("ac-live-search" + $scope.nombre);
 
-                                showResults(data, element);
+                                if(vm.extraFilter != '' && vm.extraFilter !== undefined){
+                                    vm.func($scope.objName, vm.extraFilter, function(data){
 
-                            });
-                        }else{
+                                        showResults(data, element);
 
-                            vm.func($scope.objName, function(data){
+                                    });
+                                }else{
 
-                                showResults(data, element);
+                                    vm.func($scope.objName, function(data){
 
-                            });
+                                        showResults(data, element);
 
+                                    });
+
+                                }
+
+
+
+
+
+
+                                //var top = parseInt($scope.fontSize) + parseInt($scope.top);
+                            } else {
+                                ocultarPanel();
+                            }
                         }
-
-
-
-
-
-
-                        //var top = parseInt($scope.fontSize) + parseInt($scope.top);
-                    } else {
-                        ocultarPanel();
-                    }
+                    );
                 }
 
                 function move(event){
