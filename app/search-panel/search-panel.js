@@ -105,7 +105,6 @@
                             );
 
                             if (vm.objName !== undefined && vm.objName.length >= 3) {
-                                console.log('entra');
                                 var element = document.getElementById("ac-live-search" + $scope.nombre);
 
                                 if(vm.extraFilter != '' && vm.extraFilter !== undefined){
