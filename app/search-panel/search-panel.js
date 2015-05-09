@@ -130,6 +130,7 @@
 
                                 //var top = parseInt($scope.fontSize) + parseInt($scope.top);
                             } else {
+                                $scope.obj = undefined;
                                 ocultarPanel();
                             }
                         }
