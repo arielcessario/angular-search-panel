@@ -103,7 +103,11 @@
                                     vm.objName = $scope.objName;
                                 }
                             );
-                            console.log(vm.objName);
+                            //console.log(vm.objName);
+
+                            if(vm.objName === undefined){
+                                $scope.obj = undefined;
+                            }
 
 
                             if (vm.objName !== undefined && vm.objName.length >= 3) {
