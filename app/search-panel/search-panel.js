@@ -104,7 +104,7 @@
                                 }
                             );
 
-                            if(vm.objName !== undefined && vm.objName.length == 0){
+                            if(vm.objName !== undefined || vm.objName.length == 0){
                                 $scope.obj = undefined;
                             }
 
