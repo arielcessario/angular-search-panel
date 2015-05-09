@@ -104,6 +104,11 @@
                                 }
                             );
 
+                            if(vm.objName !== undefined && vm.objName.length == 0){
+                                $scope.obj = undefined;
+                            }
+
+
                             if (vm.objName !== undefined && vm.objName.length >= 3) {
                                 var element = document.getElementById("ac-live-search" + $scope.nombre);
 
@@ -130,9 +135,7 @@
 
                                 //var top = parseInt($scope.fontSize) + parseInt($scope.top);
                             } else {
-                                if(vm.objName.length == 0){
-                                    $scope.obj = undefined;
-                                }
+
                                 ocultarPanel();
                             }
                         }
