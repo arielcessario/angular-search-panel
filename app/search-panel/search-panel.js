@@ -116,14 +116,14 @@
                                 if(vm.extraFilter != '' && vm.extraFilter !== undefined){
                                     vm.func($scope.objName, vm.extraFilter, function(data){
 
-                                        showResults(data, element);
+                                        showResults(clone(data), element);
 
                                     });
                                 }else{
 
                                     vm.func($scope.objName, function(data){
 
-                                        showResults(data, element);
+                                        showResults(clone(data), element);
 
                                     });
 
@@ -141,6 +141,23 @@
                             }
                         }
                     );
+                }
+
+                function clone(obj) {
+                    if(obj === null || typeof(obj) !== 'object' || 'isActiveClone' in obj)
+                        return obj;
+
+                    var temp = obj.constructor(); // changed
+
+                    for(var key in obj) {
+                        if(Object.prototype.hasOwnProperty.call(obj, key)) {
+                            obj['isActiveClone'] = null;
+                            temp[key] = clone(obj[key]);
+                            delete obj['isActiveClone'];
+                        }
+                    }
+
+                    return temp;
                 }
 
                 function move(event){
